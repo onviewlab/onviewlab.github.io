@@ -46,9 +46,9 @@ def header(prefix: str) -> str:
       ONLINE BEAUTY LAB <small>온뷰랩</small>
     </a>
     <nav class="nav">
-      <a href="{prefix}#case">사례</a>
       <a href="{prefix}#service">서비스</a>
-      <a href="{prefix}#review">후기</a>
+      <a href="{prefix}#process">진행 방식</a>
+      <a href="{prefix}#case">사례</a>
       <a href="{prefix}#pricing">요금</a>
       <a href="{prefix}blog/about-onviewlab.html">회사 소개</a>
       <a href="{prefix}blog/">블로그</a>
