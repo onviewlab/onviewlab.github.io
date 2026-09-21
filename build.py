@@ -50,6 +50,7 @@ def header(prefix: str) -> str:
       <a href="{prefix}#service">서비스</a>
       <a href="{prefix}#review">후기</a>
       <a href="{prefix}#pricing">요금</a>
+      <a href="{prefix}blog/about-onviewlab.html">회사 소개</a>
       <a href="{prefix}blog/">블로그</a>
     </nav>
     <a class="btn btn-a btn-sm" href="{CONSULT}" target="_blank" rel="noopener">무료 상담 신청</a>
