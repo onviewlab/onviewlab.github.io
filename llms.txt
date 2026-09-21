@@ -23,3 +23,18 @@
 - [브랜드 블로그, 어떤 매장은 문의가 오고 어떤 매장은 조용한 이유](https://obl-marketing.kr/blog/brand-blog-inquiries.html): 같은 네이버 블로그인데 결과가 다른 이유. 자랑 글 대신 손님이 찾는 정보를 써야 문의가 옵니다.
 - [뷰티샵 배너, 예쁘기만 하면 손님이 안 오는 이유](https://obl-marketing.kr/blog/banner-design.html): 배너는 그림이 아니라 가게 앞의 첫 설명서입니다. 손님이 보고 바로 움직이게 만드는 배너 기준을 정리했습니다.
 - [마케팅 대행사, 이 세 가지만 보고 고르셔도 실패가 줄어듭니다](https://obl-marketing.kr/blog/agency-choose-criteria.html): 회사 규모보다 먼저 봐야 할 것. 소통 · 솔직함 · 예산 안에서의 제안, 세 가지 기준을 정리했습니다.
+- [스레드 마케팅, 손님이 매장까지 오게 만드는 방법](https://obl-marketing.kr/blog/threads-marketing-visit.html): 스레드를 일상 글 창고로 쓰지 않으려면. 계정 세팅부터 글, 댓글까지 손님이 찾아오게 만드는 순서입니다.
+- [브랜드 블로그 대행, 맡기기 전에 확인해야 할 3가지](https://obl-marketing.kr/blog/brand-blog-agency-3.html): 업종 분석, 문맥이 맞는 글과 자연스러운 예약 안내, 원고 확인 과정. 블로그 대행을 고를 때 기준입니다.
+- [같은 마케팅을 했는데 왜 우리 매장만 결과가 다를까요](https://obl-marketing.kr/blog/same-marketing-different-result.html): 같은 히피펌도 모질에 따라 결과가 다르듯, 마케팅도 매장 상태와 상권에 따라 결과가 달라집니다.
+- [블로그 관리 대행, 무엇을 보고 골라야 할까요](https://obl-marketing.kr/blog/blog-management-agency.html): 결과보다 과정, 원활한 상담, 비용을 줄일 방향까지 짚어 주는 컨설팅. 블로그 관리 대행을 고르는 기준입니다.
+- [보험 블로그는 접근 방식이 달라야 합니다](https://obl-marketing.kr/blog/insurance-blog.html): 계약 직전 고객이 확인하는 건 신뢰입니다. 콜 영업 대신 블로그로 먼저 찾아오게 만드는 보험 블로그 구성법입니다.
+- [광고대행사를 고르는 기준, 온뷰랩은 이렇게 일합니다](https://obl-marketing.kr/blog/how-onviewlab-works.html): 레퍼런스보다 중요한 건 함께 일하는 방식입니다. 소통, 비용 이야기, 원리 설명까지 온뷰랩이 일하는 방식을 소개합니다.
+- [블로그까지 하는데 문의가 적은 이유](https://obl-marketing.kr/blog/blog-no-inquiries-local.html): 가까운 동네부터, 홍보보다 정보부터. 블로그를 해도 문의가 늘지 않을 때 먼저 바꿔 볼 것들입니다.
+- [미용학원 홍보에 브랜드 블로그가 꼭 필요한 이유](https://obl-marketing.kr/blog/beauty-academy-blog.html): 수강생과 학부모는 등록 전에 꼼꼼히 비교합니다. 조회수보다 등록으로 이어지는 학원 블로그를 만드는 방법입니다.
+- [검색은 많은데 글은 적은 키워드, 먼저 들어가는 매장이 유리합니다](https://obl-marketing.kr/blog/low-competition-keyword.html): 춘천 피부과처럼 검색량에 비해 블로그 글이 적은 키워드가 있습니다. 이런 키워드를 찾고 활용하는 방법입니다.
+- [뷰티 마케팅 회사는 매장을 처음 볼 때 무엇부터 확인할까요](https://obl-marketing.kr/blog/beauty-agency-first-check.html): 주변 경쟁 매장 비교, 플레이스 기본 세팅, 블로그 연결. 광고를 늘리기 전에 저희가 먼저 보는 것들입니다.
+- [전화 영업 광고대행사와 셀프마케팅 프로그램, 계약 전에 알아 두세요](https://obl-marketing.kr/blog/cold-call-agency-self-marketing.html): 싸다는 말에 연간 계약부터 하기 전에. 전화 영업 대행사와 셀프마케팅 프로그램에서 꼭 확인해야 할 점입니다.
+- [반영구 학원 마케팅, 채널마다 역할을 나눠야 합니다](https://obl-marketing.kr/blog/semi-permanent-academy.html): 플레이스만, 인스타그램만 하는 반영구 학원이 많습니다. 채널별 역할 분담과 시작 순서를 정리했습니다.
+- [미용실 마케팅, 인스타그램만으로는 예약까지 가기 어렵습니다](https://obl-marketing.kr/blog/salon-content-planning.html): 인스타그램 · 스레드 · 블로그로 알리고, 예약은 플레이스에서. 미용 경험이 있는 마케터가 말씀드리는 콘텐츠 기획법입니다.
+- [에스테틱 창업, 오픈 전에 미리 세팅해야 할 것들](https://obl-marketing.kr/blog/esthetic-startup.html): 주력 분야 정하기, 경쟁 매장 조사, 주차, 상품 구성, 채널 세팅 순서까지. 에스테틱 창업 전 체크리스트입니다.
+- [마케팅에서 가장 신경 써야 할 것, 광고비입니다](https://obl-marketing.kr/blog/ad-budget-ratio.html): 광고비를 많이 쓴다고 오래가는 게 아닙니다. 매출 대비 광고비 기준, 기록하는 법, 채널 순서를 정리했습니다.
