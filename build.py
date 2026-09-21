@@ -136,6 +136,24 @@ def render_body(body: str) -> str:
     return "\n".join(out)
 
 
+def faq_items(body: str) -> list[tuple[str, str]]:
+    """본문에서 '## Q. 질문' 소제목과 그 아래 문단(다음 소제목 전까지)을 질문 · 답 쌍으로 뽑는다."""
+    items, q, ans = [], None, []
+    for block in re.split(r"\n\s*\n", body):
+        block = block.strip()
+        if block.startswith("## "):
+            if q:
+                items.append((q, " ".join(ans)))
+            head = block[3:].strip()
+            q, ans = (head[2:].strip(), []) if head.startswith("Q.") else (None, [])
+        elif q and block:
+            text = re.sub(r"\*\*(.+?)\*\*", r"\1", block)
+            ans.append(" ".join(ln.lstrip("-> ").strip() for ln in text.splitlines()))
+    if q:
+        items.append((q, " ".join(ans)))
+    return [(q, a) for q, a in items if a]
+
+
 def nice_date(d: str) -> str:
     y, m, dd = d.split("-")
     return f"{int(y)}. {int(m)}. {int(dd)}."
@@ -152,6 +170,12 @@ def post_page(p: dict, site: dict) -> str:
     if canonical:
         ld["mainEntityOfPage"] = canonical
     ld_tag = ('<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>\n")
+    faq = faq_items(p["body"])
+    if faq:                                      # "## Q. 질문" 소제목이 있으면 AI 가 읽는 FAQ 표시도 넣는다
+        faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+                  "mainEntity": [{"@type": "Question", "name": q,
+                                  "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
+        ld_tag += '<script type="application/ld+json">' + json.dumps(faq_ld, ensure_ascii=False) + "</script>\n"
     page_head = head(f"{p['title']} | 온뷰랩", p["summary"], "../", "article", canonical)
     page_head = page_head.replace("</head>", ld_tag + "</head>")
     return page_head + header("../") + f"""
@@ -271,6 +295,7 @@ def main() -> None:
     if dup:
         sys.exit(f"slug 가 겹칩니다: {', '.join(dup)}")
     posts.sort(key=lambda p: (p["date"], p["file"]), reverse=True)
+    posts.sort(key=lambda p: p.get("pin") != "yes")          # 'pin: yes' 글은 목록 맨 위에 고정
 
     BLOG.mkdir(exist_ok=True)
     keep = {f"{p['slug']}.html" for p in posts} | {"index.html"}
