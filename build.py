@@ -28,38 +28,40 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 POSTS = ROOT / "posts"
 BLOG = ROOT / "blog"
-KAKAO = "https://open.kakao.com/o/snYStRui"
+# 기존 홈페이지(obl-marketing.kr)와 같은 연락처를 쓴다
+KAKAO = "http://pf.kakao.com/_xjvXxfX"
+CONSULT = "https://naver.me/551aHEwL"
+TEL = "tel:+821028020674"
 
 # 2026-09-21 사용자: 상위노출 · 지식인 · 보장 · 1위 · 100% 같은 말은 빼고 올린다
 BANNED = ["상위노출", "상위 노출", "지식인", "지식iN", "보장", "1위", "100%", "100 %"]
 
-LOGO = ('<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="currentColor" opacity=".12"/>'
-        '<circle cx="16" cy="16" r="9" fill="none" stroke="#b04a6a" stroke-width="3"/>'
-        '<circle cx="16" cy="16" r="3" fill="#b04a6a"/></svg>')
 
 
 def header(prefix: str) -> str:
     return f"""<header class="top">
   <div class="wrap">
     <a class="logo" href="{prefix}">
-      {LOGO}
-      온뷰랩
+      <img src="{prefix}logo.png" alt="">
+      ONLINE BEAUTY LAB <small>온뷰랩</small>
     </a>
     <nav class="nav">
+      <a href="{prefix}#case">사례</a>
       <a href="{prefix}#service">서비스</a>
-      <a href="{prefix}#process">진행 과정</a>
-      <a href="{prefix}#promise">약속</a>
+      <a href="{prefix}#review">후기</a>
+      <a href="{prefix}#pricing">요금</a>
       <a href="{prefix}blog/">블로그</a>
     </nav>
-    <a class="btn btn-kakao btn-sm" href="{KAKAO}" target="_blank" rel="noopener">상담 문의</a>
+    <a class="btn btn-a btn-sm" href="{CONSULT}" target="_blank" rel="noopener">무료 상담 신청</a>
   </div>
 </header>"""
 
 
 FOOTER = f"""<footer>
   <div class="wrap">
-    <div><strong>온뷰랩</strong> · 뷰티 전문 마케팅</div>
-    <div><a href="https://blog.naver.com/twmsgyu" target="_blank" rel="noopener">네이버 블로그</a> · <a href="{KAKAO}" target="_blank" rel="noopener">카카오톡 상담</a></div>
+    <div><strong>ONLINE BEAUTY LAB · 온뷰랩</strong> · 뷰티 매장 전문 마케팅</div>
+    <div><a href="{CONSULT}" target="_blank" rel="noopener">무료 상담 신청</a> · <a href="{KAKAO}" target="_blank" rel="noopener">카카오톡</a> · <a href="{TEL}">010-2802-0674</a> · <a href="https://blog.naver.com/twmsgyu" target="_blank" rel="noopener">네이버 블로그</a></div>
+    <div class="biz">대표자 김민규 · 사업자번호 125-32-01712 · 통신판매업 제 2026-경기안산-1103 호 · 월~금 09:00~19:00 · onview.lab@gmail.com</div>
   </div>
 </footer>
 <a class="btn btn-kakao float-kakao" href="{KAKAO}" target="_blank" rel="noopener">카카오톡으로 상담하기</a>"""
@@ -78,7 +80,7 @@ def head(title: str, desc: str, prefix: str, og_type: str = "website", canonical
 <meta property="og:type" content="{og_type}">
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{d}">{can}
-<link rel="icon" href="{prefix}favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{prefix}logo.png" type="image/png">
 <link rel="stylesheet" href="{prefix}style.css">
 </head>
 <body>
@@ -145,8 +147,8 @@ def post_page(p: dict, site: dict) -> str:
     ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"],
           "description": p["summary"], "datePublished": p["date"], "dateModified": p["date"],
           "inLanguage": "ko", "articleSection": p["category"],
-          "author": {"@type": "Organization", "name": "온뷰랩"},
-          "publisher": {"@type": "Organization", "name": "온뷰랩"}}
+          "author": {"@type": "Organization", "name": "온뷰랩 (ONLINE BEAUTY LAB)", "url": "https://obl-marketing.kr/"},
+          "publisher": {"@type": "Organization", "name": "온뷰랩 (ONLINE BEAUTY LAB)", "url": "https://obl-marketing.kr/"}}
     if canonical:
         ld["mainEntityOfPage"] = canonical
     ld_tag = ('<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>\n")
@@ -162,7 +164,7 @@ def post_page(p: dict, site: dict) -> str:
   <div style="height:16px"></div>
 {render_body(p['body'])}
 
-  <p style="margin-top:36px"><a class="btn btn-kakao" href="{KAKAO}" target="_blank" rel="noopener">카카오톡으로 물어보기</a></p>
+  <p style="margin-top:36px;display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-a" href="{CONSULT}" target="_blank" rel="noopener">무료 상담 신청</a><a class="btn btn-kakao" href="{KAKAO}" target="_blank" rel="noopener">카카오톡으로 물어보기</a></p>
   <p style="margin-top:28px"><a href="./">← 블로그 목록으로</a></p>
 </article>
 </main>
@@ -210,9 +212,8 @@ def update_home(posts: list[dict]) -> None:
     cards = "\n".join(card(p, "blog/") for p in posts[:4])
     block = f"<!--POSTS-->\n    <div class=\"grid grid-2\">\n{cards}\n    </div>\n    <!--/POSTS-->"
     new, n = re.subn(r"<!--POSTS-->.*?<!--/POSTS-->", lambda _m: block, text, flags=re.S)
-    if n != 1:
-        sys.exit("index.html 에서 <!--POSTS--> 자리를 못 찾았습니다.")
-    home.write_text(new, encoding="utf-8")
+    if n == 1:
+        home.write_text(new, encoding="utf-8")
 
 
 AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "PerplexityBot",
@@ -235,10 +236,12 @@ def llms_txt(posts: list[dict], site: dict) -> None:
     """AI 가 사이트를 한눈에 알 수 있게 요약한 llms.txt."""
     domain = site.get("domain", "").rstrip("/")
     base = domain or ""
-    out = ["# 온뷰랩 (뷰티 전문 마케팅)", "",
+    out = ["# 온뷰랩 ONLINE BEAUTY LAB (뷰티 매장 전문 마케팅)", "",
            "> 미용실 · 네일샵 · 피부관리실 · 반영구 등 뷰티샵 전문 마케팅 대행사. 1:1 컨설팅으로 매장 상태를 먼저 확인하고 "
            "플레이스 · 브랜드 블로그 · 체험단 · SNS 마케팅을 데이터 기반으로 운영합니다.", "",
-           f"- 상담: 카카오톡 {KAKAO}", "- 네이버 블로그: https://blog.naver.com/twmsgyu", "", "## 블로그 글", ""]
+           f"- 홈페이지: {base or 'https://obl-marketing.kr'}/", f"- 무료 상담 신청: {CONSULT}", f"- 카카오톡 채널: {KAKAO}",
+           "- 전화: 010-2802-0674", "- 이메일: onview.lab@gmail.com", "- 대표자: 김민규 (경기 안산)",
+           "- 네이버 블로그: https://blog.naver.com/twmsgyu", "", "## 블로그 글", ""]
     out += [f"- [{p['title']}]({base}/blog/{p['slug']}.html): {p['summary']}" for p in posts]
     (ROOT / "llms.txt").write_text("\n".join(out) + "\n", encoding="utf-8")
 

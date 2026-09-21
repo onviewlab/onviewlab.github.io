@@ -1,15 +1,15 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 :root {
-  --bg: #fbf8f6;
-  --bg-soft: #f4ece8;
+  --bg: #f7f8fa;
+  --bg-soft: #eef1f6;
   --card: #ffffff;
-  --ink: #1f1a1c;
-  --ink-2: #5d5358;
-  --line: #e8dcd6;
-  --accent: #b04a6a;
+  --ink: #0b1424;
+  --ink-2: #3f4c61;
+  --line: rgba(11,20,36,.12);
+  --accent: #173a8f;
   --accent-ink: #ffffff;
-  --accent-soft: #f6e3e9;
+  --accent-soft: #e6ecf8;
   --kakao: #fee500;
   --kakao-ink: #191600;
   --radius: 18px;
@@ -17,15 +17,15 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #151214;
-    --bg-soft: #1d181b;
-    --card: #221c20;
-    --ink: #f3ecef;
-    --ink-2: #b8abb1;
-    --line: #3a3036;
-    --accent: #e27d9c;
-    --accent-ink: #1a0f13;
-    --accent-soft: #3a2230;
+    --bg: #06101f;
+    --bg-soft: #0a1729;
+    --card: #0f2137;
+    --ink: #f7f8fa;
+    --ink-2: #c3cfde;
+    --line: rgba(242,245,250,.14);
+    --accent: #7ea2ff;
+    --accent-ink: #06101f;
+    --accent-soft: #16293f;
   }
 }
 
@@ -54,7 +54,9 @@ img { max-width: 100%; }
 }
 .top .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
 .logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; text-decoration: none; letter-spacing: -0.02em; }
-.logo svg { width: 28px; height: 28px; }
+.logo img { width: 28px; height: 28px; }
+@media (prefers-color-scheme: dark) { .logo img { filter: invert(1); } }
+.logo small { font-size: 13px; color: var(--ink-2); font-weight: 600; margin-left: 2px; }
 .nav { display: flex; gap: 22px; margin-left: auto; }
 .nav a { text-decoration: none; color: var(--ink-2); font-size: 15px; font-weight: 600; }
 .nav a:hover { color: var(--accent); }
@@ -154,3 +156,6 @@ footer a { color: var(--ink-2); }
 .article h2 { font-size: 24px; margin: 48px 0 14px; letter-spacing: -0.01em; }
 .article p { margin: 0 0 18px; }
 .article blockquote { margin: 24px 0; padding: 16px 20px; background: var(--accent-soft); border-radius: 12px; }
+
+.btn-a { background: var(--accent); color: var(--accent-ink); }
+footer .biz { width: 100%; font-size: 13px; line-height: 1.8; }

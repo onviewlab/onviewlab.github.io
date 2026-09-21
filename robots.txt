@@ -31,3 +31,4 @@ Allow: /
 User-agent: *
 Allow: /
 
+Sitemap: https://obl-marketing.kr/sitemap.xml
