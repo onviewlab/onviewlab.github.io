@@ -19,6 +19,7 @@ posts/ 폴더의 글 파일(.txt)을 읽어
     > 강조 상자
     **굵게**
 """
+import datetime
 import html
 import json
 import re
@@ -275,7 +276,10 @@ def sitemap(posts: list[dict], site: dict) -> None:
     domain = site.get("domain", "").rstrip("/")
     if not domain:
         return
-    urls = [(f"{domain}/", posts[0]["date"] if posts else ""), (f"{domain}/blog/", posts[0]["date"] if posts else "")]
+    latest = max((p["date"] for p in posts), default="")
+    # 첫 화면은 글이 없어도 디자인을 고치면 바뀐다 → index.html 을 고친 날짜도 본다
+    home_day = datetime.date.fromtimestamp((ROOT / "index.html").stat().st_mtime).isoformat()
+    urls = [(f"{domain}/", max(latest, home_day)), (f"{domain}/blog/", latest)]
     urls += [(f"{domain}/blog/{p['slug']}.html", p["date"]) for p in posts]
     items = "\n".join(f"  <url><loc>{u}</loc>" + (f"<lastmod>{d}</lastmod>" if d else "") + "</url>" for u, d in urls)
     (ROOT / "sitemap.xml").write_text(
