@@ -88,10 +88,10 @@ h2.tt{font-size:clamp(34px,4.2vw,54px);font-weight:900;letter-spacing:-.04em;lin
 .about .sig{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px}
 .about .sig .n{font-weight:900;font-size:17px}
 .about .sig .r{font-size:14px;color:var(--text3)}
-.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-top:110px}
-.marq .t{display:flex;gap:56px;width:max-content;animation:mq 38s linear infinite}
-.marq span{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--text);white-space:nowrap;display:flex;align-items:center;gap:56px}
-.marq span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin-top:110px}
+.marq .t{display:flex;gap:34px;width:max-content;animation:mq 38s linear infinite}
+.marq span{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--text2);white-space:nowrap;display:flex;align-items:center;gap:34px}
+.marq span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--blue)}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* ───────── service (탭) ───────── */
@@ -414,8 +414,8 @@ footer{padding-bottom:96px}
     </div>
   </div>
   <div class="marq" aria-hidden="true"><div class="t">
-    <span>미용실</span><span>바버샵</span><span>네일샵</span><span>피부관리실</span><span>에스테틱</span><span>속눈썹</span><span>왁싱</span><span>반영구</span><span>두피문신</span><span>뷰티 학원</span>
-    <span>미용실</span><span>바버샵</span><span>네일샵</span><span>피부관리실</span><span>에스테틱</span><span>속눈썹</span><span>왁싱</span><span>반영구</span><span>두피문신</span><span>뷰티 학원</span>
+    <span>미용실</span><span>바버샵</span><span>네일샵</span><span>피부관리실</span><span>에스테틱</span><span>속눈썹</span><span>왁싱</span><span>반영구</span><span>두피문신</span><span>피부과</span><span>성형외과</span><span>뷰티 학원</span>
+    <span>미용실</span><span>바버샵</span><span>네일샵</span><span>피부관리실</span><span>에스테틱</span><span>속눈썹</span><span>왁싱</span><span>반영구</span><span>두피문신</span><span>피부과</span><span>성형외과</span><span>뷰티 학원</span>
   </div></div>
 </section>
 
@@ -597,7 +597,7 @@ footer{padding-bottom:96px}
       </div>
       <div class="row2">
         <div><label for="f-shop">매장명</label><input id="f-shop" name="shop" placeholder="예) 온뷰헤어"></div>
-        <div><label for="f-type">업종</label><select id="f-type" name="type"><option value="">선택</option><option>미용실</option><option>바버샵</option><option>네일샵</option><option>피부관리실 · 에스테틱</option><option>속눈썹 · 왁싱</option><option>반영구 · 두피문신</option><option>뷰티 학원</option><option>기타</option></select></div>
+        <div><label for="f-type">업종</label><select id="f-type" name="type"><option value="">선택</option><option>미용실</option><option>바버샵</option><option>네일샵</option><option>피부관리실 · 에스테틱</option><option>속눈썹 · 왁싱</option><option>반영구 · 두피문신</option><option>피부과</option><option>성형외과</option><option>뷰티 학원</option><option>기타</option></select></div>
       </div>
       <label for="f-area">매장 지역</label><input id="f-area" name="area" placeholder="예) 안산 상록수">
       <label for="f-msg">궁금한 점</label><textarea id="f-msg" name="message" placeholder="예) 플레이스 광고를 하는데 예약이 늘지 않아요"></textarea>
@@ -638,7 +638,7 @@ footer{padding-bottom:96px}
     <p class="sub">번호만 남겨 주시면 대표가 직접 연락드려요.</p>
     <label for="q-name">이름 <em>*</em></label><input id="q-name" name="name" autocomplete="name" required>
     <label for="q-phone">연락처 <em>*</em></label><input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" required>
-    <label for="q-type">업종</label><select id="q-type" name="type"><option value="">선택</option><option>미용실</option><option>바버샵</option><option>네일샵</option><option>피부관리실 · 에스테틱</option><option>속눈썹 · 왁싱</option><option>반영구 · 두피문신</option><option>뷰티 학원</option><option>기타</option></select>
+    <label for="q-type">업종</label><select id="q-type" name="type"><option value="">선택</option><option>미용실</option><option>바버샵</option><option>네일샵</option><option>피부관리실 · 에스테틱</option><option>속눈썹 · 왁싱</option><option>반영구 · 두피문신</option><option>피부과</option><option>성형외과</option><option>뷰티 학원</option><option>기타</option></select>
     <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <input type="hidden" name="message" value="(하단 빠른 신청)">
     <div class="agree"><label><input type="checkbox" id="q-agree" name="agree" required>개인정보 수집 · 이용 동의 (필수)</label>이름 · 연락처 · 업종을 상담 연락에만 쓰고, 상담 종료 후 1년 뒤 파기합니다. 메일 전송 서비스(FormSubmit)를 거쳐 전달됩니다.</div>
