@@ -78,6 +78,11 @@ h2.tt{font-size:clamp(34px,4.2vw,54px);font-weight:900;letter-spacing:-.04em;lin
 .about h2{font-size:clamp(38px,4.8vw,66px);font-weight:900;letter-spacing:-.045em;line-height:1.16;margin-top:22px}
 .about h2 span{color:var(--text3)}
 .about .side-t p{font-size:18px;line-height:1.85;color:var(--text2)}
+/* 본문 줄을 고르게 — 한 낱말만 남는 줄이 안 생기게 나눈다 (낱말은 자르지 않는다) */
+.about .side-t p,.svc .top p,.panel .info p,.proc .top p,.case .top p,.price .head p,
+.faq .l p,.faq details p,.cta .left p,.post-card p,.hero .desc,.hero .tags{text-wrap:pretty}
+/* 글줄이 충분히 긴 곳만 줄 끝을 맞춘다 — 좁은 칸에서 맞추면 글자 사이가 벌어진다 */
+.about .side-t p{text-align:justify}
 .about .side-t p+p{margin-top:18px}
 .about .side-t b{color:var(--text)}
 .about .sig{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px}
