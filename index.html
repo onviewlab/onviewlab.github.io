@@ -332,7 +332,13 @@ footer{padding-bottom:96px}
   .hdr .r a:not(.b){display:none}
   .hdr .r a.b{height:34px;padding:0 12px;font-size:12.5px;white-space:nowrap}.hdr .r svg{display:none}
   .burger{flex:0 0 42px;width:42px;height:42px;margin-left:8px}
-  .hero .wrap{padding-bottom:110px}
+  /* 휴대폰: 첫 화면 글이 머리글 · 아래 버튼 줄과 겹치지 않게 */
+  .hero{height:auto;min-height:100vh;min-height:100svh}
+  .hero .wrap{height:auto;min-height:100vh;min-height:100svh;padding-top:96px;padding-bottom:120px}
+  .hero h1{font-size:44px;letter-spacing:-.035em}
+  .hero .blue{margin-top:26px;font-size:18px}
+  .hero .strong{font-size:19px}
+  .hero .btns{margin-top:34px}
   .about,.svc,.proc,.case,.price,.faq,.blogs{padding:90px 0}
   .marq{margin-top:70px}
   .panel{grid-template-columns:1fr}
