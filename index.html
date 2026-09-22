@@ -714,6 +714,11 @@ footer .cp{margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.35)}
   document.getElementById('qclose').addEventListener('click',function(){open(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')open(false);});
 })();
+// 블로그에서 /#contact 로 들어오면 신청 칸으로 확실히 내려가기
+window.addEventListener('load',function(){
+  var t=location.hash&&document.getElementById(location.hash.slice(1));
+  if(t)setTimeout(function(){t.scrollIntoView({behavior:'auto',block:'start'});},60);
+});
 // 모바일 메뉴
 (function(){
   var m=document.getElementById('mnav');

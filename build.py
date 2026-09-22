@@ -30,7 +30,7 @@ POSTS = ROOT / "posts"
 BLOG = ROOT / "blog"
 # 기존 홈페이지(obl-marketing.kr)와 같은 연락처를 쓴다
 KAKAO = "http://pf.kakao.com/_xjvXxfX"
-CONSULT = "https://naver.me/551aHEwL"
+CONSULT = "/#contact"   # 2026-09-22 사용자: 블로그 상담 버튼도 홈페이지 신청 칸으로 (메일 · 카톡 알림이 한곳에 모이게)
 TEL = "tel:+821028020674"
 
 # 2026-09-21 사용자: 상위노출 · 지식인 · 보장 · 1위 · 100% 같은 말은 빼고 올린다
@@ -53,7 +53,7 @@ def header(prefix: str) -> str:
       <a href="{prefix}blog/about-onviewlab.html">회사 소개</a>
       <a href="{prefix}blog/">블로그</a>
     </nav>
-    <a class="btn btn-a btn-sm" href="{CONSULT}" target="_blank" rel="noopener">무료 상담 신청</a>
+    <a class="btn btn-a btn-sm" href="{CONSULT}">무료 상담 신청</a>
   </div>
 </header>"""
 
@@ -61,7 +61,7 @@ def header(prefix: str) -> str:
 FOOTER = f"""<footer>
   <div class="wrap">
     <div><strong>ONLINE BEAUTY LAB · 온뷰랩</strong> · 뷰티 매장 전문 마케팅</div>
-    <div><a href="{CONSULT}" target="_blank" rel="noopener">무료 상담 신청</a> · <a href="{KAKAO}" target="_blank" rel="noopener">카카오톡</a> · <a href="{TEL}">010-2802-0674</a> · <a href="https://blog.naver.com/twmsgyu" target="_blank" rel="noopener">네이버 블로그</a></div>
+    <div><a href="{CONSULT}">무료 상담 신청</a> · <a href="{KAKAO}" target="_blank" rel="noopener">카카오톡</a> · <a href="{TEL}">010-2802-0674</a> · <a href="https://blog.naver.com/twmsgyu" target="_blank" rel="noopener">네이버 블로그</a></div>
     <div class="biz">대표자 김민규 · 사업자번호 125-32-01712 · 통신판매업 제 2026-경기안산-1103 호 · 월~금 09:00~19:00 · onview.lab@gmail.com</div>
   </div>
 </footer>
@@ -189,7 +189,7 @@ def post_page(p: dict, site: dict) -> str:
   <div style="height:16px"></div>
 {render_body(p['body'])}
 
-  <p style="margin-top:36px;display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-a" href="{CONSULT}" target="_blank" rel="noopener">무료 상담 신청</a><a class="btn btn-kakao" href="{KAKAO}" target="_blank" rel="noopener">카카오톡으로 물어보기</a></p>
+  <p style="margin-top:36px;display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn-a" href="{CONSULT}">무료 상담 신청</a><a class="btn btn-kakao" href="{KAKAO}" target="_blank" rel="noopener">카카오톡으로 물어보기</a></p>
   <p style="margin-top:28px"><a href="./">← 블로그 목록으로</a></p>
 </article>
 </main>
@@ -264,7 +264,7 @@ def llms_txt(posts: list[dict], site: dict) -> None:
     out = ["# 온뷰랩 ONLINE BEAUTY LAB (뷰티 매장 전문 마케팅)", "",
            "> 미용실 · 네일샵 · 피부관리실 · 반영구 등 뷰티샵 전문 마케팅 대행사. 1:1 컨설팅으로 매장 상태를 먼저 확인하고 "
            "플레이스 · 브랜드 블로그 · 체험단 · SNS 마케팅을 데이터 기반으로 운영합니다.", "",
-           f"- 홈페이지: {base or 'https://obl-marketing.kr'}/", f"- 무료 상담 신청: {CONSULT}", f"- 카카오톡 채널: {KAKAO}",
+           f"- 홈페이지: {base or 'https://obl-marketing.kr'}/", f"- 무료 상담 신청: {base or 'https://obl-marketing.kr'}{CONSULT}", f"- 카카오톡 채널: {KAKAO}",
            "- 전화: 010-2802-0674", "- 이메일: onview.lab@gmail.com", "- 대표자: 김민규 (경기 안산)",
            "- 네이버 블로그: https://blog.naver.com/twmsgyu", "", "## 블로그 글", ""]
     out += [f"- [{p['title']}]({base}/blog/{p['slug']}.html): {p['summary']}" for p in posts]
