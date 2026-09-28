@@ -1,4 +1,4 @@
-"""빙(IndexNow)에 새 글 주소를 자동으로 알려주는 스크립트.
+"""빙·네이버(IndexNow)에 새 글 주소를 자동으로 알려주는 스크립트.
 
 - 기본: 이번 실행에서 sitemap.xml 에 새로 생긴 주소만 제출
 - INDEXNOW_ALL=1 이면 sitemap.xml 의 모든 주소를 제출
@@ -12,7 +12,10 @@ import urllib.request
 HOST = "obl-marketing.kr"
 KEY = "74c4bb86f20943d980b63498203ecd07"
 KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
-ENDPOINT = "https://api.indexnow.org/indexnow"
+ENDPOINTS = [
+    ("빙", "https://api.indexnow.org/indexnow"),
+    ("네이버", "https://searchadvisor.naver.com/indexnow"),
+]
 
 
 def locs(text):
@@ -49,15 +52,18 @@ def main():
         "keyLocation": KEY_LOCATION,
         "urlList": urls,
     }).encode("utf-8")
-    req = urllib.request.Request(
-        ENDPOINT, data=body, method="POST",
-        headers={"Content-Type": "application/json; charset=utf-8"},
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=30) as res:
-            print(f"IndexNow: {len(urls)}개 제출, 응답 {res.status}")
-    except urllib.error.HTTPError as e:
-        print(f"IndexNow: 제출 실패 {e.code} {e.read()[:200]!r}")
+    for name, endpoint in ENDPOINTS:
+        req = urllib.request.Request(
+            endpoint, data=body, method="POST",
+            headers={"Content-Type": "application/json; charset=utf-8"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as res:
+                print(f"IndexNow {name}: {len(urls)}개 제출, 응답 {res.status}")
+        except urllib.error.HTTPError as e:
+            print(f"IndexNow {name}: 제출 실패 {e.code} {e.read()[:200]!r}")
+        except OSError as e:
+            print(f"IndexNow {name}: 연결 실패 {e}")
     for u in urls:
         print("  ", u)
 
