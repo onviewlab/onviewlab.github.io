@@ -60,7 +60,7 @@ jobs:
       - name: 구글에 사이트맵 다시 알리기 (서치콘솔)
         if: steps.commit.outputs.pushed == '1' || github.event_name != 'schedule'
         env:
-          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT || secrets.YOUR_SECRET_NAME }}
         run: |
           sleep 90   # GitHub Pages 에 새 글이 반영될 때까지 잠깐 기다림
           pip install --quiet google-auth requests
