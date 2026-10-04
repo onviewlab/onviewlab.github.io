@@ -18,6 +18,7 @@ posts/ 폴더의 글 파일(.txt)을 읽어
     ## 소제목
     > 강조 상자
     **굵게**
+    ![그림 설명](img/파일.webp)   (그림 한 장, 줄 하나에)
 """
 import datetime
 import html
@@ -128,7 +129,11 @@ def render_body(body: str) -> str:
         block = block.strip()
         if not block:
             continue
-        if block.startswith("## "):
+        img = re.fullmatch(r"!\[(.*?)\]\((\S+?)\)", block)
+        if img:
+            alt, src = html.escape(img.group(1)), html.escape(img.group(2))
+            out.append(f'  <figure><img src="{src}" alt="{alt}" loading="lazy" width="1080" height="1080"></figure>')
+        elif block.startswith("## "):
             out.append(f"  <h2>{inline(block[3:].strip())}</h2>")
         elif block.startswith(">"):
             lines = [ln.lstrip("> ").strip() for ln in block.splitlines()]

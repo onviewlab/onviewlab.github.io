@@ -64,8 +64,21 @@ def main() -> None:
         return
 
     new = [i for i in reversed(items) if i["logNo"] not in done]      # 오래된 글부터
+    # 홈페이지에 먼저 직접 올린 글('naver_match: 키워드')과 제목이 겹치면 다시 옮기지 않는다
+    matches = {}
+    for f in (ns.ROOT / "posts").glob("*.txt"):
+        head = f.read_text(encoding="utf-8").split("\n---\n", 1)[0]
+        m = re.search(r"^naver_match:\s*(.+)$", head, re.M)
+        s = re.search(r"^slug:\s*(.+)$", head, re.M)
+        if m and s:
+            matches[m.group(1).replace(" ", "")] = s.group(1).strip()
     made = 0
     for i in new:
+        key = next((k for k in matches if k in i["title"].replace(" ", "")), None)
+        if key:
+            done[i["logNo"]] = {"title": i["title"], "slug": f"(홈페이지에 먼저 올림: {matches[key]})"}
+            print(f"  건너뜀(이미 있음): {i['title']}")
+            continue
         body = to_body(ns.post_text(i["logNo"]))
         if not body:
             continue

@@ -155,6 +155,8 @@ footer a { color: var(--ink-2); }
 .article .meta { color: var(--ink-2); font-size: 14px; }
 .article h2 { font-size: 24px; margin: 48px 0 14px; letter-spacing: -0.01em; }
 .article p { margin: 0 0 18px; }
+.article figure { margin: 28px 0; }
+.article figure img { display: block; width: 100%; height: auto; border-radius: 14px; }
 .article blockquote { margin: 24px 0; padding: 16px 20px; background: var(--accent-soft); border-radius: 12px; }
 
 .btn-a { background: var(--accent); color: var(--accent-ink); }
