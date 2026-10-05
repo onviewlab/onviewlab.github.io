@@ -21,6 +21,7 @@ posts/ 폴더의 글 파일(.txt)을 읽어
     ![그림 설명](img/파일.webp)   (그림 한 장, 줄 하나에)
 """
 import datetime
+import email.utils
 import html
 import json
 import re
@@ -292,6 +293,49 @@ def sitemap(posts: list[dict], site: dict) -> None:
         encoding="utf-8")
 
 
+def plain_text(body: str) -> str:
+    """링크드인 등 글자만 받는 곳에 올릴 원문 텍스트 (마크다운 기호·이미지 제거)."""
+    out = []
+    for ln in body.splitlines():
+        t = ln.strip()
+        if t.startswith("!["):
+            continue
+        if t.startswith("#"):
+            t = "■ " + t.lstrip("#").strip()
+        elif t.startswith(">"):
+            t = t.lstrip(">").strip()
+        t = re.sub(r"\*\*(.+?)\*\*", r"\1", t)
+        t = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", t)
+        out.append(t)
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out)).strip()
+
+
+def feed(posts: list[dict], site: dict) -> None:
+    """feed.xml — 최신 글 RSS. 링크드인 회사 페이지 자동 게시(Zapier)가 이 파일을 읽는다."""
+    domain = site.get("domain", "").rstrip("/")
+    if not domain:
+        return
+    esc = lambda x: html.escape(x, quote=False)
+    items = []
+    for p in sorted(posts, key=lambda p: (p["date"], p["file"]), reverse=True)[:20]:
+        url = f"{domain}/blog/{p['slug']}.html"
+        text = plain_text(p["body"])
+        tail = f"\n\n원문 보기 👉 {url}"
+        limit = 2900 - len(p["title"]) - len(tail)
+        if len(text) > limit:
+            text = text[:limit].rstrip() + "…"
+        post_text = f"{p['title']}\n\n{text}{tail}"
+        pub = email.utils.format_datetime(datetime.datetime.fromisoformat(p["date"] + "T09:00:00+09:00"))
+        items.append(f"  <item>\n    <title>{esc(p['title'])}</title>\n    <link>{url}</link>\n"
+                     f"    <guid isPermaLink=\"true\">{url}</guid>\n    <pubDate>{pub}</pubDate>\n"
+                     f"    <description>{esc(post_text)}</description>\n  </item>")
+    (ROOT / "feed.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n<channel>\n'
+        f"  <title>온뷰랩 칼럼</title>\n  <link>{domain}/blog/</link>\n"
+        "  <description>뷰티 매장 전문 마케팅 온뷰랩 칼럼</description>\n  <language>ko</language>\n"
+        + "\n".join(items) + "\n</channel>\n</rss>\n", encoding="utf-8")
+
+
 def main() -> None:
     site = load_site()
     posts = [parse(f) for f in sorted(POSTS.glob("*.txt"))]
@@ -319,6 +363,7 @@ def main() -> None:
     sitemap(posts, site)
     robots(site)
     llms_txt(posts, site)
+    feed(posts, site)
     print(f"글 {len(posts)}개를 만들었습니다.")
 
 

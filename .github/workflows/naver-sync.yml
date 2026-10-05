@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "onviewlab-bot"
           git config user.email "onview.lab@gmail.com"
-          git add -A posts blog index.html sitemap.xml robots.txt llms.txt naver_synced.json
+          git add -A posts blog index.html sitemap.xml robots.txt llms.txt feed.xml naver_synced.json
           if git diff --cached --quiet; then
             echo "바뀐 것 없음"
           else
