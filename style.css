@@ -60,7 +60,15 @@ img { max-width: 100%; }
 .nav { display: flex; gap: 22px; margin-left: auto; }
 .nav a { text-decoration: none; color: var(--ink-2); font-size: 15px; font-weight: 600; }
 .nav a:hover { color: var(--accent); }
-@media (max-width: 720px) { .nav { display: none; } .top .btn { margin-left: auto; } }
+@media (max-width: 720px) {
+  .nav { display: none; }
+  .top .wrap { gap: 12px; height: 60px; }
+  /* 휴대폰: 상호가 두 줄로 꺾이거나 버튼이 찌그러지지 않게 한 줄로 */
+  .logo { font-size: 17px; white-space: nowrap; min-width: 0; }
+  .logo img { width: 26px; height: 26px; flex: none; }
+  .logo small { display: none; }
+  .top .btn { margin-left: auto; flex: none; white-space: nowrap; height: 36px; padding: 0 14px; font-size: 13px; }
+}
 
 /* 버튼 */
 .btn {
