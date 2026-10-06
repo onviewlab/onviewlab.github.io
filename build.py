@@ -184,7 +184,8 @@ def post_page(p: dict, site: dict) -> str:
                   "mainEntity": [{"@type": "Question", "name": q,
                                   "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
         ld_tag += '<script type="application/ld+json">' + json.dumps(faq_ld, ensure_ascii=False) + "</script>\n"
-    page_head = head(f"{p['title']} | 온뷰랩", p["summary"], "../", "article", canonical)
+    page_title = p["title"] if p["title"].startswith("온뷰랩") else f"{p['title']} | 온뷰랩"
+    page_head = head(page_title, p["summary"], "../", "article", canonical)
     page_head = page_head.replace("</head>", ld_tag + "</head>")
     return page_head + header("../") + f"""
 
