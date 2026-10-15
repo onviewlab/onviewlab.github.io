@@ -85,7 +85,8 @@ def head(title: str, desc: str, prefix: str, og_type: str = "website", canonical
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{d}">{can}
 <link rel="icon" href="{prefix}favicon.svg" type="image/svg+xml">
-<link rel="icon" href="{prefix}logo.png" type="image/png">
+<link rel="icon" href="{prefix}favicon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="{prefix}favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="{prefix}apple-touch-icon.png">
 <link rel="stylesheet" href="{prefix}style.css">
 </head>
