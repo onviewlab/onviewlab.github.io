@@ -54,8 +54,7 @@ img { max-width: 100%; }
 }
 .top .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
 .logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 20px; text-decoration: none; letter-spacing: -0.02em; }
-.logo img { width: 28px; height: 28px; }
-@media (prefers-color-scheme: dark) { .logo img { filter: invert(1); } }
+.logo img { width: 28px; height: 28px; border-radius: 7px; }
 .logo small { font-size: 13px; color: var(--ink-2); font-weight: 600; margin-left: 2px; }
 .nav { display: flex; gap: 22px; margin-left: auto; }
 .nav a { text-decoration: none; color: var(--ink-2); font-size: 15px; font-weight: 600; }
