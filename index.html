@@ -38,7 +38,7 @@ h2.tt{font-size:clamp(34px,4.2vw,54px);font-weight:900;letter-spacing:-.04em;lin
 .hdr{position:absolute;inset:0 0 auto;z-index:20}
 .hdr .wrap{display:flex;align-items:center;height:96px;gap:56px}
 .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:900;font-size:20px;letter-spacing:.02em}
-.logo img{width:34px;height:34px;border-radius:8px}
+.logo img{width:34px;height:34px;border-radius:8px}.logo img.wordmark{width:auto;height:30px;border-radius:0}
 .gnb{display:flex;gap:34px}
 .gnb a{color:rgba(255,255,255,.86);font-weight:700;font-size:15px;letter-spacing:.06em}
 .gnb a:hover{color:#fff}
@@ -337,7 +337,7 @@ footer{padding-bottom:96px}
 @media(max-width:760px){
   .wrap{padding-inline:20px}
   .hdr .wrap{height:76px;gap:10px}
-  .logo{font-size:17px;white-space:nowrap;gap:8px}.logo img{width:28px;height:28px}
+  .logo{font-size:17px;white-space:nowrap;gap:8px}.logo img{width:28px;height:28px}.logo img.wordmark{width:auto;height:24px}
   .hdr .r a:not(.b){display:none}
   .hdr .r a.b{height:34px;padding:0 12px;font-size:12.5px;white-space:nowrap}.hdr .r svg{display:none}
   .burger{flex:0 0 42px;width:42px;height:42px;margin-left:8px}
@@ -373,7 +373,7 @@ footer{padding-bottom:96px}
 
 <header class="hdr">
   <div class="wrap">
-    <a class="logo" href="./"><img src="logo.png" alt="">ONVIEW LAB</a>
+    <a class="logo" href="./" aria-label="온뷰랩 ONVIEW LAB 홈"><img class="wordmark" src="logo-wordmark.svg" alt="ONVIEW LAB"></a>
     <nav class="gnb"><a href="#about">ABOUT</a><a href="#service">SERVICE</a><a href="#process">PROCESS</a><a href="#case">CASE</a><a href="blog/">BLOG</a><a href="#contact">CONTACT</a></nav>
     <div class="r">
       <a class="b" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>플레이스 무료진단</a>
@@ -622,7 +622,7 @@ footer{padding-bottom:96px}
 <footer>
   <div class="wrap">
     <div class="row">
-      <a class="logo" href="./"><img src="logo.png" alt="">ONVIEW LAB</a>
+      <a class="logo" href="./" aria-label="온뷰랩 ONVIEW LAB 홈"><img class="wordmark" src="logo-wordmark.svg" alt="ONVIEW LAB"></a>
       <div class="fn"><a href="#about">소개</a><a href="#service">서비스</a><a href="#process">진행 방식</a><a href="#case">사례</a><a href="#pricing">요금</a><a href="blog/about-onviewlab.html">회사 소개</a><a href="blog/">블로그</a><a href="https://blog.naver.com/twmsgyu" target="_blank" rel="noopener">네이버 블로그</a></div>
     </div>
     <div class="biz"><span>상호 온뷰랩 (ONLINE BEAUTY LAB)</span><span>대표자 김민규</span><span>사업자번호 125-32-01712</span><span>통신판매업 제 2026-경기안산-1103 호</span><span>onview.lab@gmail.com</span><span>010-2802-0674</span><span>월~금 09:00~19:00</span></div>
