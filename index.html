@@ -74,7 +74,7 @@ a{color:inherit;text-decoration:none}
 .i-ringtxt svg{width:100%;height:100%;animation:spin 18s linear infinite;overflow:visible}
 .i-ringtxt text{font:700 11px var(--latin);letter-spacing:.32em;fill:rgba(255,255,255,.55)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.i-dot{position:absolute;left:50%;top:46%;width:calc(var(--rt)*.13);aspect-ratio:1;border-radius:50%;
+.i-dot{position:absolute;left:50%;top:46%;width:calc(var(--rt)*.17);aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle at 50% 50%,#FFFFFF 0,#F1EDFF 16%,#CFC3FF 38%,#A994FF 62%,#8E76FF 82%,rgba(160,140,255,.75) 100%);
   box-shadow:0 0 18px 4px rgba(190,175,255,.55),0 0 50px 14px rgba(130,105,255,.35),0 0 120px 40px rgba(110,84,250,.18);
   filter:blur(2.2px);
@@ -82,6 +82,10 @@ a{color:inherit;text-decoration:none}
 #intro.s3 .i-dot{animation:dotGlow 2.6s ease-in-out .9s infinite}
 .i-dot::before{content:"";position:absolute;inset:-120%;border-radius:50%;background:radial-gradient(circle,rgba(150,128,255,.22) 0,rgba(150,128,255,.08) 35%,rgba(150,128,255,0) 65%);animation:haloBreath 2.6s ease-in-out infinite}
 .i-dot::after{content:"";position:absolute;left:50%;top:50%;width:260%;height:2px;transform:translate(-50%,-50%);background:linear-gradient(90deg,rgba(200,190,255,0),rgba(220,212,255,.45),rgba(200,190,255,0));filter:blur(1px);opacity:.6;animation:haloBreath 2.6s ease-in-out infinite}
+#orbgl{position:absolute;left:50%;top:50%;width:420%;height:420%;transform:translate(-50%,-50%);pointer-events:none;display:none}
+.i-dot.gl{background:none;box-shadow:none;filter:none;animation:none!important}
+.i-dot.gl::before,.i-dot.gl::after{display:none}
+.i-dot.gl #orbgl{display:block}
 @keyframes dotGlow{0%,100%{box-shadow:0 0 18px 4px rgba(190,175,255,.55),0 0 50px 14px rgba(130,105,255,.35),0 0 120px 40px rgba(110,84,250,.18)}50%{box-shadow:0 0 26px 8px rgba(200,188,255,.7),0 0 70px 22px rgba(140,115,255,.42),0 0 160px 60px rgba(110,84,250,.24)}}
 @keyframes haloBreath{0%,100%{opacity:1}50%{opacity:.45}}
 #intro.s3 .i-dot{transform:translate(-50%,-50%) scale(1)}
@@ -468,7 +472,7 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
     <div class="i-top"><span class="i-k"><b>BEAUTY</b> MARKETING LAB</span><span class="i-k">ANSAN · KR</span></div>
     <div class="i-center">
       <div class="i-ringtxt"><svg viewBox="0 0 200 200"><defs><path id="rp" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#rp" textLength="548" lengthAdjust="spacing">ANALYZE · UNDERSTAND · START · BE VISIBLE ·</textPath></text></svg></div>
-      <div class="i-dot"></div>
+      <div class="i-dot" id="idot"><canvas id="orbgl"></canvas></div>
       <div class="i-word"><span class="logo"><svg role="img" aria-label="onview LAB" xmlns="http://www.w3.org/2000/svg" viewBox="36 -740 4832 994"><circle cx="306.0" cy="-248.0" r="217.0" fill="none" stroke="#FFFFFF" stroke-width="90"/><circle cx="346.0" cy="-248.0" r="82" fill="#8b7af0"/><path d="M664.0 0.0V-496.0H788.0V-431.0H806.0Q818.0 -457.0 851.0 -480.5Q884.0 -504.0 951.0 -504.0Q1009.0 -504.0 1052.5 -477.5Q1096.0 -451.0 1120.0 -404.5Q1144.0 -358.0 1144.0 -296.0V0.0H1018.0V-286.0Q1018.0 -342.0 990.5 -370.0Q963.0 -398.0 912.0 -398.0Q854.0 -398.0 822.0 -359.5Q790.0 -321.0 790.0 -252.0V0.0Z M1366.0 0.0 1208.0 -496.0H1342.0L1457.0 -92.0H1475.0L1590.0 -496.0H1724.0L1566.0 0.0Z M1792.0 0.0V-496.0H1918.0V0.0ZM1855.0 -554.0Q1821.0 -554.0 1797.5 -576.0Q1774.0 -598.0 1774.0 -634.0Q1774.0 -670.0 1797.5 -692.0Q1821.0 -714.0 1855.0 -714.0Q1890.0 -714.0 1913.0 -692.0Q1936.0 -670.0 1936.0 -634.0Q1936.0 -598.0 1913.0 -576.0Q1890.0 -554.0 1855.0 -554.0Z M2266.0 14.0Q2192.0 14.0 2135.5 -17.5Q2079.0 -49.0 2047.5 -106.5Q2016.0 -164.0 2016.0 -242.0V-254.0Q2016.0 -332.0 2047.0 -389.5Q2078.0 -447.0 2134.0 -478.5Q2190.0 -510.0 2264.0 -510.0Q2337.0 -510.0 2391.0 -477.5Q2445.0 -445.0 2475.0 -387.5Q2505.0 -330.0 2505.0 -254.0V-211.0H2144.0Q2146.0 -160.0 2182.0 -128.0Q2218.0 -96.0 2270.0 -96.0Q2323.0 -96.0 2348.0 -119.0Q2373.0 -142.0 2386.0 -170.0L2489.0 -116.0Q2475.0 -90.0 2448.5 -59.5Q2422.0 -29.0 2378.0 -7.5Q2334.0 14.0 2266.0 14.0ZM2145.0 -305.0H2377.0Q2373.0 -348.0 2342.5 -374.0Q2312.0 -400.0 2263.0 -400.0Q2212.0 -400.0 2182.0 -374.0Q2152.0 -348.0 2145.0 -305.0Z M2639.0 0.0 2569.0 -496.0H2694.0L2738.0 -85.0H2756.0L2820.0 -496.0H3022.0L3086.0 -85.0H3104.0L3148.0 -496.0H3273.0L3203.0 0.0H2994.0L2930.0 -411.0H2912.0L2848.0 0.0Z" fill="#FFFFFF"/><path d="M3457.8922651933703 -486.0H3585.4337016574586V-103.37569060773481H3783.4585635359117V0.0H3457.8922651933703Z M3860.3784530386743 0.0 4022.1546961325967 -486.0H4196.013812154696L4357.118784530387 0.0H4219.508287292818L4190.308011049724 -95.32044198895028H4027.524861878453L3998.6602209944754 0.0ZM4160.772099447514 -191.98342541436463 4110.762430939227 -355.1022099447514H4106.734806629835L4057.060773480663 -191.98342541436463Z M4445.450276243094 -486.0H4653.544198895028Q4707.917127071823 -486.0 4746.011740331493 -471.064226519337Q4784.106353591161 -456.128453038674 4803.405386740332 -428.7741712707182Q4822.704419889503 -401.41988950276243 4822.704419889503 -363.82872928176795Q4822.704419889503 -337.31353591160223 4810.957182320442 -315.3294198895028Q4799.209944751381 -293.34530386740335 4778.0649171270725 -278.40953038674036Q4756.919889502763 -263.47375690607737 4729.397790055249 -257.76795580110496V-253.06906077348066Q4759.940607734807 -252.0621546961326 4785.616712707182 -237.29419889502765Q4811.2928176795585 -222.52624309392266 4826.396408839779 -196.51450276243094Q4841.5 -170.50276243093924 4841.5 -136.939226519337Q4841.5 -97.3342541436464 4820.858425414364 -66.28798342541437Q4800.21685082873 -35.24171270718232 4761.618784530387 -17.62085635359116Q4723.020718232045 0.0 4670.997237569061 0.0H4445.450276243094ZM4706.57458563536 -153.04972375690608Q4706.57458563536 -179.56491712707182 4688.78591160221 -194.16505524861878Q4670.997237569061 -208.76519337016575 4640.118784530387 -208.76519337016575H4572.991712707182V-102.70441988950276H4638.1049723756905Q4672.004143646409 -102.70441988950276 4689.289364640885 -115.45856353591161Q4706.57458563536 -128.21270718232046 4706.57458563536 -153.04972375690608ZM4691.135359116022 -336.9779005524862Q4691.135359116022 -359.8011049723757 4675.0248618784535 -372.5552486187845Q4658.914364640884 -385.30939226519337 4632.063535911602 -385.30939226519337H4572.991712707182V-288.646408839779H4630.049723756906Q4657.236187845304 -288.646408839779 4674.185773480664 -301.40055248618785Q4691.135359116022 -314.1546961325967 4691.135359116022 -336.9779005524862Z" fill="#FFFFFF"/></svg></span></div>
       <div class="i-word-sub i-k">광고보다 먼저, 보이는 매장</div>
     </div>
@@ -837,6 +841,68 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
     }
     ig.globalCompositeOperation='source-over';requestAnimationFrame(idraw);
   }
+  /* ───── 시네마틱 보라 구슬 (WebGL) ───── */
+  const orbGL=(()=>{
+    const cv=$('#orbgl');let gl;try{gl=cv.getContext('webgl',{premultipliedAlpha:true,alpha:true,antialias:true});}catch(_){}
+    if(!gl)return null;
+    const vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    const fs=`precision highp float;uniform vec2 R;uniform float T;
+float h(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
+float n(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);
+ return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),
+            mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z);}
+float fbm(vec3 p){float a=.5,s=0.;for(int i=0;i<5;i++){s+=a*n(p);p=p*2.03+vec3(1.7,9.2,3.1);a*=.5;}return s;}
+mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}
+void main(){
+ vec2 uv=(gl_FragCoord.xy/R)*2.-1.;vec2 q=uv*4.2;float r=length(q);
+ vec3 col=vec3(0.);float al=0.;
+ float d=max(r-1.,0.);
+ vec3 gcol=vec3(.48,.36,1.);
+ float glow=.8*exp(-d*2.6)+.32*exp(-d*.75);
+ float ring=exp(-pow((r-1.02)*22.,2.))*.9;
+ if(r<1.){
+  vec3 nrm=vec3(q,sqrt(1.-r*r));
+  vec3 np=nrm;np.xz*=rot(T*.22);np.xy*=rot(.35);
+  vec3 w=np*2.1;
+  float warp=fbm(w*1.3+vec3(0.,0.,T*.18));
+  float f=fbm(w+warp*1.6+vec3(T*.12,-T*.08,0.));
+  float bands=smoothstep(.42,.86,f);
+  vec3 deep=vec3(.07,.02,.24),mid=vec3(.36,.17,.92),hi=vec3(.78,.66,1.),hot=vec3(1.,.96,1.);
+  col=mix(deep,mid,smoothstep(.2,.7,f));
+  col+=hi*pow(bands,2.)*.9+hot*pow(bands,6.)*.8;
+  vec3 L=normalize(vec3(-.55,.62,.75));
+  float dif=max(dot(nrm,L),0.);
+  float shade=smoothstep(-.35,1.,dot(nrm,L));
+  col=mix(col*vec3(.10,.05,.30),col*1.35,shade);
+  col+=vec3(.20,.10,.55)*pow(max(dot(nrm,normalize(vec3(.4,-.8,.2))),0.),3.)*.35;
+  float core=pow(nrm.z,5.);col+=vec3(.75,.6,1.)*core*.35;
+  float fres=pow(1.-nrm.z,2.6);col+=vec3(.66,.55,1.)*fres*1.5;
+  vec3 H=normalize(L+vec3(0.,0.,1.));
+  col+=vec3(1.)*pow(max(dot(nrm,H),0.),90.)*1.4;
+  col+=vec3(.9,.85,1.)*pow(max(dot(nrm,H),0.),14.)*.18;
+  col+=vec3(.55,.45,1.)*pow(max(dot(nrm,normalize(vec3(.6,-.7,.4))),0.),8.)*.35;
+  al=smoothstep(1.,.985,r);
+ }
+ float pulse=.85+.15*sin(T*1.6);
+ vec3 outer=gcol*(glow*pulse)+vec3(.8,.72,1.)*ring*.55;
+ vec3 c=col*al+outer*(1.-al*.85);
+ c=1.-exp(-c*1.35);
+ float A=clamp(max(al,max(glow*pulse*.9,ring*.6)),0.,1.);
+ gl_FragColor=vec4(c*A/max(A,.001)*A,A);
+}`;
+    const sh=(t,src)=>{const o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return gl.getShaderParameter(o,gl.COMPILE_STATUS)?o:null;};
+    const v=sh(gl.VERTEX_SHADER,vs),fr=sh(gl.FRAGMENT_SHADER,fs);if(!v||!fr)return null;
+    const pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,fr);gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return null;
+    gl.useProgram(pr);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    const uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T');
+    let run=false,t0=performance.now();
+    function size(){const d=Math.min(2,devicePixelRatio||1);const w=Math.max(2,Math.round(cv.clientWidth*d));if(cv.width!==w){cv.width=cv.height=w;}gl.viewport(0,0,cv.width,cv.height);}
+    function frame(now){if(!run)return;size();gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,(now-t0)/1000);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);requestAnimationFrame(frame);}
+    $('#idot').classList.add('gl');
+    return{start(){if(run)return;run=true;requestAnimationFrame(frame);},stop(){run=false;}};
+  })();
+
   function setProg(v){inum.textContent=String(Math.round(v*100)).padStart(3,'0');ibar.style.transform=`scaleX(${v})`;ilist.forEach((el,i)=>el.classList.toggle('on',v>=(i+1)*.22));}
   function heroIn(){
     body.classList.remove('pre','locked');
@@ -848,12 +914,12 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
   }
   function finish(){
     if(tl)tl.kill();setProg(1);intro.classList.add('s2','s3');
-    const out=()=>{intro.classList.add('open');setTimeout(heroIn,250);setTimeout(()=>{intro.classList.add('gone');irun=false;},1500);};
+    const out=()=>{intro.classList.add('open');setTimeout(heroIn,250);setTimeout(()=>{intro.classList.add('gone');irun=false;if(orbGL)orbGL.stop();},1500);};
     if(hasG&&!reduce){gsap.to(ist,{p:1,duration:.3});gsap.to(ist,{x:1,duration:.9,ease:'power3.in',onComplete:out});}else out();
   }
   function play(){
     scrollTo(0,0);intro.className='';body.classList.add('pre','locked');orb.form=0;ist.p=0;ist.x=0;setProg(0);
-    irun=true;requestAnimationFrame(idraw);
+    irun=true;requestAnimationFrame(idraw);if(orbGL)orbGL.start();
     if(!hasG||reduce){finish();return;}
     gsap.set('.h1 .c',{yPercent:110,opacity:0});gsap.set('.fu',{opacity:0});
     const o={v:0};
