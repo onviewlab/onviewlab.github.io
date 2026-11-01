@@ -831,7 +831,10 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
   isize();addEventListener('resize',isize);
   function idraw(t){
     if(!irun)return;ig.clearRect(0,0,IW,IH);
-    {const pp=orbit.p,rt=iR*2.7,k=Math.min(1,Math.max(0,(pp-.45)/.55)),e=1-k*k*(3-2*k),ang=-Math.PI*.5+pp*Math.PI*3,rad=rt*.64*e;
+    {const pp=orbit.p,rt=iR*2.7,sm=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x);},
+       ringR=iR*.8,outR=rt*.62,a0=-Math.PI*.5,
+       ang=a0+Math.PI*.35*sm(pp/.18)+Math.PI*2*sm((pp-.18)/.64),
+       rad=pp<.18?outR+(ringR-outR)*sm(pp/.18):pp<.82?ringR:ringR*(1-sm((pp-.82)/.18));
      idot.style.setProperty('--ox',(Math.cos(ang)*rad).toFixed(2)+'px');idot.style.setProperty('--oy',(Math.sin(ang)*rad*.92).toFixed(2)+'px');
      idot.style.setProperty('--os',(.7+.3*pp).toFixed(3));}ig.globalCompositeOperation='lighter';
     const cx=IW/2,cy=IH*.46,R=iR*.8*(1+ist.x*3.2),rot=t*.00035;
