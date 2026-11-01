@@ -148,9 +148,9 @@ footer .logo svg{height:24px}
 .h1 .sp{display:inline-block;white-space:nowrap}
 .h1 .lab{color:transparent;-webkit-text-stroke:2px #fff;transition:color .5s}
 .h1 .lab:hover{color:#fff}
-.slot{display:inline-flex;vertical-align:bottom;height:1.5em;overflow:hidden;color:var(--sky)}
+.slot{display:inline-flex;vertical-align:bottom;height:1.5em;overflow:hidden;color:var(--sky);transition:width .7s cubic-bezier(.7,0,.2,1)}
 #slot{display:flex;flex-direction:column}
-#slot span{display:block;text-align:right;height:1.5em;line-height:1.5em;white-space:nowrap}
+#slot span{display:block;width:max-content;text-align:left;height:1.5em;line-height:1.5em;white-space:nowrap}
 .sub{margin-top:clamp(32px,5vh,56px);display:grid;gap:10px}
 .sub p{margin:0}
 .s1{font-size:clamp(20px,2.2vw,30px);font-weight:500;color:var(--sky);letter-spacing:-.02em;line-height:1.5}
@@ -818,8 +818,10 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
   requestAnimationFrame(odraw);
 
   /* 슬롯 단어 회전 */
-  const slot=$('#slot');let si=0;
-  setInterval(()=>{if(reduce)return;si++;slot.style.transition='transform .7s cubic-bezier(.7,0,.2,1)';slot.style.transform=`translateY(${-si*1.5}em)`;
+  const slot=$('#slot'),slotBox=slot.parentElement;let si=0;
+  const fitSlot=()=>{const w=slot.children[si%5].getBoundingClientRect().width;if(w)slotBox.style.width=w+'px';};
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlot);fitSlot();addEventListener('resize',fitSlot);
+  setInterval(()=>{if(reduce)return;si++;fitSlot();slot.style.transition='transform .7s cubic-bezier(.7,0,.2,1)';slot.style.transform=`translateY(${-si*1.5}em)`;
     if(si===5){setTimeout(()=>{slot.style.transition='none';slot.style.transform='translateY(0)';si=0;},750);}},2000);
 
   /* ───── 인트로: 빛 입자가 모여 로고의 o 링이 됨 ───── */
