@@ -62,7 +62,7 @@ a{color:inherit;text-decoration:none}
 @keyframes beam{from{transform:translateX(52vw) skewX(-8deg)}to{transform:translateX(68vw) skewX(6deg)}}
 #icv{position:absolute;inset:0;width:100%;height:100%;transition:opacity .5s}
 #intro.open #icv,#intro.open .i-glow,#intro.open .i-beam{opacity:0}
-#intro.out .i-dot{opacity:0;scale:1.35;transition:scale 1.1s cubic-bezier(.5,0,.2,1),opacity .9s ease}
+#intro.out .i-dot{opacity:0!important;scale:1.35;transition:scale 1.1s cubic-bezier(.5,0,.2,1),opacity .9s ease}
 #intro.out .i-ringtxt{opacity:0;transform:translate(-50%,-50%) scale(1.12);transition:opacity .8s ease,transform 1.1s cubic-bezier(.5,0,.2,1)}
 #intro.out .i-word,#intro.out .i-word-sub{opacity:0;transition:opacity .6s ease}
 .i-ui{position:absolute;inset:0;padding:calc(26px + env(safe-area-inset-top,0px)) var(--gutR) calc(26px + env(safe-area-inset-bottom,0px)) var(--gutL);display:grid;grid-template-rows:auto 1fr auto;transition:opacity .35s}
@@ -91,7 +91,7 @@ a{color:inherit;text-decoration:none}
 .i-dot.gl #orbgl{display:block}
 @keyframes dotGlow{0%,100%{box-shadow:0 0 18px 4px rgba(190,175,255,.55),0 0 50px 14px rgba(130,105,255,.35),0 0 120px 40px rgba(110,84,250,.18)}50%{box-shadow:0 0 26px 8px rgba(200,188,255,.7),0 0 70px 22px rgba(140,115,255,.42),0 0 160px 60px rgba(110,84,250,.24)}}
 @keyframes haloBreath{0%,100%{opacity:1}50%{opacity:.45}}
-#intro.s2 .i-dot,#intro.s3 .i-dot{opacity:1}
+#intro.s2 .i-dot,#intro.s3 .i-dot{opacity:var(--oa,1)}
 .i-word{position:absolute;left:50%;top:calc(46% + var(--rt)*.62);transform:translateX(-50%);display:flex;overflow:hidden;padding-bottom:4px}
 .i-word .logo > *,.i-word .logo{transition:transform .9s cubic-bezier(.16,1,.3,1)}
 #intro:not(.s3) .i-word .logo{transform:translateY(110%)}
@@ -831,12 +831,14 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
   isize();addEventListener('resize',isize);
   function idraw(t){
     if(!irun)return;ig.clearRect(0,0,IW,IH);
-    {const pp=orbit.p,rt=iR*2.7,sm=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x);},
-       ringR=iR*.8,outR=rt*.62,a0=0,
-       ang=a0+Math.PI*2*sm((pp-.18)/.64),
-       rad=pp<.18?outR+(ringR-outR)*sm(pp/.18):pp<.82?ringR:ringR*(1-sm((pp-.82)/.18));
-     idot.style.setProperty('--ox',(Math.cos(ang)*rad).toFixed(2)+'px');idot.style.setProperty('--oy',(Math.sin(ang)*rad*.92).toFixed(2)+'px');
-     idot.style.setProperty('--os',(.7+.3*pp).toFixed(3));}ig.globalCompositeOperation='lighter';
+    {const pp=orbit.p,rt=iR*2.7,sm=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x);};
+     // 지구본처럼: 가운데 높이에서 세로축을 중심으로 오른쪽으로 한 바퀴 (앞→오른쪽→뒤→왼쪽→앞)
+     const lap=sm(pp/.9),th=lap*Math.PI*2,R=rt*.36*(1-sm((pp-.9)/.1)),
+           x=Math.sin(th)*R,z=Math.cos(th),dep=(z+1)/2;
+     idot.style.setProperty('--ox',x.toFixed(2)+'px');idot.style.setProperty('--oy','0px');
+     idot.style.setProperty('--os',(pp>=1?1:(.62+.3*dep)+.08*sm((pp-.9)/.1)).toFixed(3));
+     idot.style.setProperty('--oa',(pp>=1?1:.35+.65*dep).toFixed(3));
+     idot.style.zIndex=z<0?'0':'2';}ig.globalCompositeOperation='lighter';
     const cx=IW/2,cy=IH*.46,R=iR*.8*(1+ist.x*3.2),rot=t*.00035;
     for(const p of IP){
       let f=Math.min(1,Math.max(0,(ist.p-p.d)/.55));f=f<.5?4*f*f*f:1-Math.pow(-2*f+2,3)/2;
