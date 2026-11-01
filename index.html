@@ -826,7 +826,7 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
 
   /* ───── 인트로: 빛 입자가 모여 로고의 o 링이 됨 ───── */
   const intro=$('#intro'),inum=$('#inum'),ibar=$('#ibar'),ilist=[...$('#ilist').children].slice(1);let tl=null;
-  const ic=$('#icv'),ig=ic.getContext('2d');let IW,IH,iR;const IP=[];const ist={p:0,x:0};const orbit={p:0};const idot=$('#idot');let irun=false;
+  const ic=$('#icv'),ig=ic.getContext('2d');let IW,IH,iR;const IP=[];const ist={p:0,x:0};const orbit={p:0};const idot=$('#idot');const ringEl=$('.i-ringtxt');let irun=false;
   for(let i=0;i<(innerWidth<700?700:1400);i++){const th=(Math.random()+Math.random()+Math.random()-1.5)*.16;
     IP.push({a:Math.random()*6.283,r:1+th,sa:Math.random()*6.283,sd:1.6+Math.random()*2.6,d:Math.random()*.45,gold:Math.random()<.35,z:Math.random(),tw:Math.random()*6.28});}
   function isize(){const d=Math.min(2,devicePixelRatio||1);IW=innerWidth;IH=innerHeight;ic.width=IW*d;ic.height=IH*d;ig.setTransform(d,0,0,d,0,0);iR=Math.min(IW,IH)*.17;intro.style.setProperty('--rt',(iR*2.7)+'px');}
@@ -834,7 +834,9 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
   function idraw(t){
     if(!irun)return;ig.clearRect(0,0,IW,IH);
 ig.globalCompositeOperation='lighter';
-    const cx=IW/2,cy=IH*.46,R=iR*.8*(1+ist.x*3.2),rot=t*.00035;
+    const rr=ringEl.getBoundingClientRect(),icr=ic.getBoundingClientRect();
+    const cx=rr.width?rr.left-icr.left+rr.width/2:IW/2,cy=rr.width?rr.top-icr.top+rr.height/2:IH*.46;
+    const tR=(rr.width||iR*2.7)*.44,R=tR*.68*(1+ist.x*3.2),rot=t*.00035;
     for(const p of IP){
       let f=Math.min(1,Math.max(0,(ist.p-p.d)/.55));f=f<.5?4*f*f*f:1-Math.pow(-2*f+2,3)/2;
       const a=p.a+rot*(.6+p.z*.8)+(1-f)*2.2, tw=Math.sin(t*.003+p.tw)*.012;
