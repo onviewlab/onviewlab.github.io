@@ -1,39 +1,29 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 :root {
-  --bg: #f7f8fa;
-  --bg-soft: #eef1f6;
-  --card: #ffffff;
-  --ink: #0b1424;
-  --ink-2: #3f4c61;
-  --line: rgba(11,20,36,.12);
-  --accent: #173a8f;
-  --accent-ink: #ffffff;
-  --accent-soft: #e6ecf8;
+  /* 2026-11-02 메인 새 디자인과 같은 어두운 테마 */
+  --bg: #0A0B0B;
+  --bg-soft: #111312;
+  --card: rgba(255,255,255,.045);
+  --ink: #FFFFFF;
+  --ink-2: #C9CCD2;
+  --line: rgba(255,255,255,.11);
+  --accent: #6E9BFF;
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(47,111,242,.16);
+  --blue: #2F6FF2;
   --kakao: #fee500;
   --kakao-ink: #191600;
-  --radius: 18px;
+  --radius: 20px;
   --wrap: 1080px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #06101f;
-    --bg-soft: #0a1729;
-    --card: #0f2137;
-    --ink: #f7f8fa;
-    --ink-2: #c3cfde;
-    --line: rgba(242,245,250,.14);
-    --accent: #7ea2ff;
-    --accent-ink: #06101f;
-    --accent-soft: #16293f;
-  }
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--bg);
+  background: radial-gradient(120% 70% at 85% 0%, #151714 0%, var(--bg) 60%) fixed, var(--bg);
   color: var(--ink);
   font-family: "Pretendard", -apple-system, "Malgun Gothic", sans-serif;
   font-size: 17px;
@@ -168,3 +158,42 @@ footer a { color: var(--ink-2); }
 
 .btn-a { background: var(--accent); color: var(--accent-ink); }
 footer .biz { width: 100%; font-size: 13px; line-height: 1.8; }
+
+/* ───── 2026-11-02 새 메인과 같은 머리 · 바닥 · 오른쪽 상담 버튼 ───── */
+.top { background: rgba(10,11,11,.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.top .wrap { height: 72px; max-width: 1320px; }
+.logo img.wm { width: auto; height: 24px; border-radius: 0; }
+.nav a { font-family: "Inter", "Pretendard", sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .06em; }
+.nav a:hover, .nav a.on { color: var(--accent); }
+.btn-a { background: var(--blue); color: #fff; box-shadow: 0 10px 30px -10px rgba(47,111,242,.7); }
+.article .eyebrow, .eyebrow { background: transparent; border: 1px solid var(--line); color: var(--accent); }
+.article blockquote { border: 1px solid rgba(110,155,255,.25); }
+.article a { color: var(--accent); }
+.card { transition: border-color .3s, transform .4s cubic-bezier(.16,1,.3,1); }
+.post-card:hover { transform: translateY(-4px); border-color: rgba(110,155,255,.5); }
+.sec-head .label { font-family: "Inter", "Pretendard", sans-serif; letter-spacing: .16em; }
+footer { background: var(--bg); }
+footer .ft-logo img { height: 22px; display: block; margin-bottom: 6px; }
+.float-kakao { display: none !important; }
+body { padding-bottom: 0 !important; }
+.qbar { position: fixed; right: 16px; bottom: 24px; z-index: 30; display: flex; flex-direction: column; gap: 10px; }
+.qbar a { display: flex; align-items: center; gap: 9px; width: 148px; height: 50px; padding: 0 20px; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; color: #fff; background: #0A0B0B; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 10px 26px -8px rgba(0,0,0,.6); transition: transform .3s cubic-bezier(.16,1,.3,1); }
+.qbar a:hover { transform: translateX(-4px); }
+.qbar svg { width: 17px; height: 17px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.qbar svg.fill { fill: currentColor; stroke: none; }
+.qbar .k { color: #191600; background: #FEE500; border-color: #FEE500; }
+.qbar .b { background: var(--blue); border-color: var(--blue); }
+.qbar .w { color: #111; background: #fff; border-color: #fff; }
+.telpop { position: fixed; right: 176px; bottom: 24px; z-index: 31; width: 280px; max-width: calc(100vw - 32px); background: #fff; color: #111; border-radius: 18px; padding: 18px 18px 16px; box-shadow: 0 20px 50px -10px rgba(0,0,0,.6); display: grid; gap: 8px; }
+.telpop[hidden] { display: none; }
+.telpop .k2 { font-size: 12px; color: #777; }
+.telpop .num { display: flex; align-items: center; justify-content: center; height: 48px; border-radius: 999px; background: var(--blue); color: #fff; font-weight: 800; font-size: 18px; text-decoration: none; }
+.telpop .h { font-size: 12px; color: #888; text-align: center; }
+.telpop .x { position: absolute; right: 10px; top: 8px; width: 30px; height: 30px; border: 0; background: none; font-size: 22px; color: #999; cursor: pointer; }
+@media (max-width: 760px) {
+  .qbar { right: 12px; bottom: 16px; gap: 8px; }
+  .qbar a { width: 58px; height: 58px; padding: 0; border-radius: 50%; flex-direction: column; justify-content: center; gap: 2px; font-size: 9.5px; letter-spacing: -.04em; }
+  .qbar svg { width: 18px; height: 18px; }
+  .telpop { right: 82px; bottom: 16px; width: 240px; max-width: calc(100vw - 98px); }
+  .logo img.wm { height: 20px; }
+}
