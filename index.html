@@ -833,7 +833,7 @@ body.pre .mbar{transform:translateX(140%);opacity:0}
     if(!irun)return;ig.clearRect(0,0,IW,IH);
     {const pp=orbit.p,rt=iR*2.7,sm=x=>{x=Math.min(1,Math.max(0,x));return x*x*(3-2*x);};
      // 지구본처럼: 가운데 높이에서 세로축을 중심으로 오른쪽으로 한 바퀴 (앞→오른쪽→뒤→왼쪽→앞)
-     const q=Math.min(1,pp/.9),lap=Math.pow(q,2.6),th=lap*Math.PI*2,R=rt*.74*(1-sm((pp-.9)/.1)),
+     const q=Math.min(1,pp/.9),lap=1-Math.pow(1-q,2.6),th=lap*Math.PI*6,R=rt*.74*(1-sm((pp-.9)/.1)),
            x=Math.sin(th)*R,z=Math.cos(th),dep=(z+1)/2;
      idot.style.setProperty('--ox',x.toFixed(2)+'px');idot.style.setProperty('--oy','0px');
      idot.style.setProperty('--os',(pp>=1?1:(.62+.3*dep)+.08*sm((pp-.9)/.1)).toFixed(3));
@@ -936,11 +936,11 @@ void main(){
     gsap.set('.h1 .c',{yPercent:110,opacity:0});gsap.set('.fu',{opacity:0});
     const o={v:0};
     tl=gsap.timeline({onComplete:finish});
-    tl.to(ist,{p:1,duration:2.6,ease:'none'},0)
-      .to(o,{v:1,duration:2.9,ease:'power2.inOut',onUpdate:()=>setProg(o.v)},0)
+    tl.to(ist,{p:1,duration:3,ease:'none'},0)
+      .to(o,{v:1,duration:3.6,ease:'power2.inOut',onUpdate:()=>setProg(o.v)},0)
       .add(()=>intro.classList.add('s2'),.4)
-      .to(orbit,{p:1,duration:2.5,ease:'none'},.4)
-      .add(()=>intro.classList.add('s3'),2.6)
+      .to(orbit,{p:1,duration:3.2,ease:'none'},.4)
+      .add(()=>intro.classList.add('s3'),3.3)
       .to({}, {duration:1.2});
   }
   $('#skip').onclick=finish;
