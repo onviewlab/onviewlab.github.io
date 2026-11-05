@@ -1,4 +1,4 @@
-title: 온뷰랩 소개 · 하는 일과 일하는 방식
+title: 온뷰랩 소개 · 진행 서비스와 업무방식
 date: 2026-09-21
 category: 온뷰랩 소개
 slug: about-onviewlab
